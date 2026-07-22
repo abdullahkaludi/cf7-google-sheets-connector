@@ -223,75 +223,210 @@ Each GSheetConnector integration is built for its respective WordPress plugin, m
 
 == Installation ==
 
-= 1. Install and activate =
+Follow these steps to connect Contact Form 7 to Google Sheets and start sending form submissions automatically.
 
-1. In your WordPress admin, go to **Plugins → Add New**, search for "CF7 Google Sheets Connector", and click **Install Now**, then **Activate**. Alternatively, upload the `cf7-google-sheets-connector` folder to `/wp-content/plugins/` and activate it from the **Plugins** screen.
-2. Make sure [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) is installed and active — this plugin requires it.
+= 1. Install and Activate CF7 Google Sheets Connector =
 
-= 2. Connect your Google account =
+1. In your WordPress dashboard, go to **Plugins → Add New**.
+2. Search for **CF7 Google Sheets Connector**.
+3. Click **Install Now**, then click **Activate**.
+4. Make sure [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) is also installed and activated, as it is required for this plugin.
 
-1. Go to **Contact → Google Sheets → Integration**.
-2. Click **Sign in with Google** and approve the requested Google Sheets and Google Drive permissions in the popup. (Prefer not to use your personal Google login? Choose the **Service Account** method instead and paste in a service-account JSON key from Google Cloud Console.)
-3. Once connected, the Integration tab will show your authenticated Google account.
+You can also install the plugin manually by uploading the `cf7-google-sheets-connector` folder to `/wp-content/plugins/` and activating it from the **Plugins** screen in WordPress.
 
-= 3. Prepare your Google Sheet =
+= 2. Connect Your Google Account =
 
-1. Create (or open) a spreadsheet at [sheets.google.com](https://sheets.google.com/).
-2. Note the Sheet Name, Sheet ID, Tab Name, and Tab ID (visible in the sheet's URL and tab settings).
-3. In row 1 of the tab, add your column headers. The first column should be `date`. For every other column, use the exact Contact Form 7 field/mail-tag name (e.g. `your-name`, `your-email`, `your-subject`, `your-message`).
-4. Column headers must be lowercase, with hyphens instead of spaces, and no leading numbers, underscores, or quotes.
+1. In your WordPress dashboard, go to **Contact → Google Sheets → Integration**.
+2. Click **Sign in with Google**.
+3. Sign in to the Google account you want to use and approve the requested permissions.
+4. After successful authentication, your connected Google account will appear in the Integration tab.
 
-= 4. Connect your form =
+The recommended Quick Connect method uses Google OAuth 2.0 authentication and does not require you to create your own Google Cloud project or API credentials.
 
-1. Edit the Contact Form 7 form you want to sync, then open its new **Google Sheets** tab.
-2. Enter the Sheet Name, Sheet ID, Tab Name, and Tab ID you noted earlier, then click **Save**.
-3. Submit a test entry on your form and confirm it appears as a new row in your Google Sheet.
+You can also use the **Google Service Account** authentication method for server-to-server connections.
 
-That's it — every future submission to that form will now sync to your spreadsheet automatically.
+= 3. Prepare Your Google Sheet =
+
+1. Create a new Google Sheet or open an existing spreadsheet in [Google Sheets](https://sheets.google.com/).
+2. Note the **Sheet Name**, **Sheet ID**, **Tab Name**, and **Tab ID**.
+3. In the first row of your worksheet, add the column headers that correspond to your Contact Form 7 fields.
+4. Add `date` as the first column if you want to store the submission date.
+
+For example, if your Contact Form 7 form contains:
+
+`[text your-name]`
+
+`[email your-email]`
+
+`[text your-subject]`
+
+`[textarea your-message]`
+
+Your Google Sheet header row can be:
+
+`date | your-name | your-email | your-subject | your-message`
+
+Make sure your spreadsheet headers match the Contact Form 7 field names exactly.
+
+Use lowercase field names with hyphens where required, and avoid spaces, leading numbers, underscores, or quotation marks in your column headers.
+
+= 4. Connect Contact Form 7 to Google Sheets =
+
+1. Go to **Contact → Contact Forms** in your WordPress dashboard.
+2. Edit the Contact Form 7 form you want to connect.
+3. Open the **Google Sheets** tab inside the form settings.
+4. Enter the **Sheet Name**, **Sheet ID**, **Tab Name**, and **Tab ID** for your spreadsheet.
+5. Save your form settings.
+6. Submit a test entry through your Contact Form 7 form.
+7. Open your Google Sheet and confirm that the submission appears as a new row.
+
+That's it. New Contact Form 7 submissions will now be sent automatically to your connected Google Sheet.
 
 == Frequently Asked Questions ==
 
-= Data isn't showing up in my Google Sheet — what should I check? =
+= How do I connect Contact Form 7 to Google Sheets? =
 
-Work through these in order:
+Install and activate CF7 Google Sheets Connector, then go to **Contact → Google Sheets → Integration** and connect your Google account using Google OAuth 2.0.
 
-1. Confirm the form's **Google Sheets** tab has a saved Sheet Name, Sheet ID, Tab Name, and Tab ID.
-2. Confirm your Google connection is still valid on the **Integration** tab. If it shows as expired or invalid, reconnect.
-3. Confirm your sheet's row 1 headers exactly match your form's field/mail-tag names — lowercase, hyphenated, no leading numbers, underscores, or spaces. A mismatched header simply stays blank; it won't throw a visible error.
-4. If you're using a Service Account, make sure the spreadsheet is explicitly shared (as Editor) with the service account's email address.
-5. Check the **Error Log** on the System Status tab for authentication or permission errors.
+Next, create or open your Google Sheet, add your Contact Form 7 field names as column headers, and enter the Sheet Name, Sheet ID, Tab Name, and Tab ID in the **Google Sheets** tab of your Contact Form 7 form.
 
-= The form submits, but the button just keeps spinning — is that this plugin? =
+After saving the settings, submit a test form entry. The submission should appear automatically as a new row in your Google Sheet.
 
-The submit/spinner behavior is controlled by Contact Form 7 itself, not this plugin. This plugin only runs after Contact Form 7 has already confirmed the message was sent, so a stuck spinner usually points to a Contact Form 7 or email-delivery issue rather than the Google Sheets connection.
+= Does Contact Form 7 automatically send submissions to Google Sheets? =
+
+Contact Form 7 does not send submissions to Google Sheets by itself. CF7 Google Sheets Connector adds this integration.
+
+Once your form and spreadsheet are connected, new Contact Form 7 submissions are automatically sent to Google Sheets in real time, so you don't need to manually export or copy form data.
+
+= Do I need to create a Google Cloud project to connect Contact Form 7 to Google Sheets? =
+
+No. The recommended **Quick Connect** method uses Google OAuth 2.0 authentication and lets you connect your Google account without creating your own Google Cloud project or API credentials.
+
+For advanced requirements, [CF7 Google Sheets Connector PRO](https://www.gsheetconnector.com/cf7-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector) also supports manual Google authentication using your own Google Cloud project and OAuth credentials.
 
 = How do I connect my Google account? =
 
-On **Contact → Google Sheets → Integration**, click **Sign in with Google**, approve the requested permissions in the popup, and you're connected — no Google Cloud Console setup required. If you'd rather not sign in with a personal account, use the **Service Account** method instead.
+Go to **Contact → Google Sheets → Integration** and click **Sign in with Google**.
 
-= Can I use a Google Service Account instead of signing in with my Google account? =
+Choose the Google account you want to connect and approve the requested permissions. Once authentication is complete, the connected account will appear in the Integration tab.
 
-Yes. Create a service account and JSON key in Google Cloud Console, share your target spreadsheet with the service account's email address (shown in the plugin once your key validates), then paste the JSON key into the Service Account field on the Integration tab.
+No Google Cloud Console setup is required when using the recommended Quick Connect method.
 
-= Can I connect more than one Contact Form 7 form to Google Sheets? =
+= Can I use a Google Service Account instead of signing in with Google? =
 
-Yes, every form can be connected to its own Google Sheet independently. The free version supports one sheet/tab feed per form; [GSheetConnector PRO](https://www.gsheetconnector.com/cf7-new-2026#compare) adds multiple feeds per form.
+Yes. CF7 Google Sheets Connector supports Google Service Account authentication.
 
-= What happens if the Google Sheets sync fails for a submission? =
+Create a service account and JSON key in Google Cloud, add the JSON key to the Service Account settings in the plugin, and share your target Google Sheet with the service account email address.
 
-If the local **CF7 Database** feature is enabled (Settings → General Settings), every submission is stored in your WordPress database regardless of whether the Google Sheets sync succeeds. You can review those entries and resend them to your spreadsheet using the "Send to Spreadsheet" bulk action.
+This provides a server-to-server connection without requiring an interactive Google login after configuration.
 
-= Where is my form data sent, and is it secure? =
+= How do I map Contact Form 7 fields to Google Sheets columns? =
 
-Submitted data is sent directly from your WordPress site to Google's official Sheets and Drive APIs over an authenticated OAuth 2.0 (or service-account) connection — the plugin does not route your form data through third-party servers. Values are sanitized before being written to your sheet, and a formula-injection guard strips characters that could otherwise execute as spreadsheet formulas.
+In the free version, add your Contact Form 7 field names as column headers in the first row of your Google Sheet.
 
-= Does uninstalling the plugin delete my data? =
+For example, if your Contact Form 7 fields are:
 
-By default, uninstalling keeps your saved settings so you can reinstall without reconnecting. If you'd like your stored Google connection details removed on uninstall, enable the "Delete data on uninstall" option under Settings → General Settings before removing the plugin.
+`your-name`, `your-email`, `your-phone`, `your-message`
 
-= Will this work with my page builder (Elementor, Divi, Avada, etc.)? =
+Use the same names as your Google Sheets column headers:
 
-Yes. As long as you're using an actual Contact Form 7 form — whether placed directly or embedded via a page builder — the Google Sheets tab and sync will work the same way.
+`your-name | your-email | your-phone | your-message`
+
+When someone submits the form, each value is added under its corresponding Google Sheets column.
+
+[CF7 Google Sheets Connector PRO](https://www.gsheetconnector.com/cf7-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector) provides advanced field mapping, custom header names, column ordering, field controls, and automatic sheet and tab detection.
+
+= Can I send Contact Form 7 special mail tags to Google Sheets? =
+
+Yes, but support differs between the Free and PRO versions.
+
+The free version supports the Contact Form 7 **date special mail tag**.
+
+CF7 Google Sheets Connector PRO supports additional Contact Form 7 special mail tags, including date, time, serial number, remote IP address, user agent, page URL, post information, site information, and more. PRO also supports custom mail tags and provides toggle controls to enable or disable individual mail tags.
+
+= Can I connect multiple Contact Form 7 forms to Google Sheets? =
+
+Yes. You can connect multiple Contact Form 7 forms to Google Sheets. Each CF7 form can have its own Google Sheet and worksheet configuration.
+
+The free version supports one Google Sheets feed per form.
+
+[CF7 Google Sheets Connector PRO](https://www.gsheetconnector.com/cf7-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector) supports multiple Google Sheets feeds per form, allowing a single Contact Form 7 form to send data to multiple spreadsheet destinations.
+
+= Can Contact Form 7 submissions be saved in WordPress as well as Google Sheets? =
+
+Yes. Enable the **CF7 Database** feature to store Contact Form 7 submissions locally in your WordPress database in addition to sending them to Google Sheets.
+
+Stored entries can be viewed and searched from WordPress, marked as read or unread, and selected entries can be resent to Google Sheets when needed.
+
+= What happens if a Contact Form 7 submission fails to sync with Google Sheets? =
+
+If the **CF7 Database** feature is enabled under **Settings → General Settings**, the submission can still be stored locally in your WordPress database even if the Google Sheets sync is interrupted.
+
+You can review stored entries and resend selected submissions to Google Sheets using the **Send to Spreadsheet** bulk action.
+
+You can also check the plugin's Error Log and System Status information for authentication, API, permission, or configuration errors.
+
+= Why is my Contact Form 7 data not showing in Google Sheets? =
+
+If your Contact Form 7 submissions are not appearing in Google Sheets, check the following:
+
+1. Make sure the correct **Sheet Name**, **Sheet ID**, **Tab Name**, and **Tab ID** are saved in the form's Google Sheets settings.
+2. Check that your Google account is still connected under **Contact → Google Sheets → Integration**.
+3. Make sure the first-row Google Sheets headers match your Contact Form 7 field names exactly.
+4. Check for incorrect spaces, underscores, capitalization, or other differences in your spreadsheet column headers.
+5. If you're using a Google Service Account, make sure the spreadsheet has been shared with the service account email address with the required permissions.
+6. Check the plugin's **Error Log** and **System Status** for authentication, Google API, or permission errors.
+
+A column header that does not match its corresponding CF7 field name may result in that field's value not appearing in the expected Google Sheets column.
+
+= My Contact Form 7 form submits, but the submit button keeps spinning. Is GSheetConnector causing it? =
+
+Usually, a continuously spinning Contact Form 7 submit button indicates an issue with the form submission process itself, JavaScript, REST API communication, email delivery, or another WordPress configuration.
+
+CF7 Google Sheets Connector processes the Google Sheets integration after the relevant Contact Form 7 submission event. Check Contact Form 7, your browser console, WordPress configuration, and any email or REST API errors when troubleshooting a stuck submission.
+
+= Can I use CF7 Google Sheets Connector with Elementor, Divi, or Avada? =
+
+Yes. If you embed a Contact Form 7 form inside a page created with Elementor, Divi, Avada, or another page builder, CF7 Google Sheets Connector can still send that Contact Form 7 form's submissions to Google Sheets.
+
+The important point is that the embedded form must be a **Contact Form 7 form**.
+
+If you're using the page builder's own native form instead, use the corresponding GSheetConnector integration:
+
+* [Elementor Forms → Google Sheets Integration](https://www.gsheetconnector.com/elementor-forms-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector)
+* [Divi Forms → Google Sheets Integration](https://www.gsheetconnector.com/divi-forms-db-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector)
+* [Avada Forms → Google Sheets Integration](https://www.gsheetconnector.com/avada-forms-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector)
+
+= Is my Contact Form 7 data sent through GSheetConnector servers? =
+
+Form submission data is sent from your WordPress website to Google's APIs using the configured Google authentication method rather than being used as a separate GSheetConnector-hosted form submission database.
+
+Your WordPress site can also store submissions locally when the CF7 Database feature is enabled.
+
+As with any website handling personal information, you should configure your WordPress site, forms, Google account, spreadsheet permissions, and privacy disclosures according to the data you collect and the privacy requirements that apply to your website.
+
+= Does CF7 Google Sheets Connector protect against spreadsheet formula injection? =
+
+Yes. The plugin includes formula-injection protection for values sent to Google Sheets. Submitted values beginning with characters such as `=`, `+`, `-`, or `@` are handled before being written to the spreadsheet to help prevent submitted content from being interpreted as a spreadsheet formula.
+
+= Does uninstalling CF7 Google Sheets Connector delete my data? =
+
+By default, uninstalling the plugin keeps saved settings so you can reinstall it without having to configure everything again.
+
+If you want stored plugin data and Google connection details removed during uninstall, enable **Delete data on uninstall** under **Settings → General Settings** before uninstalling the plugin.
+
+= Does CF7 Google Sheets Connector support WordPress Multisite? =
+
+Yes. CF7 Google Sheets Connector supports WordPress Multisite. Each site can manage its own Google connection and Contact Form 7 to Google Sheets configuration.
+
+= What's the difference between CF7 Google Sheets Connector Free and PRO? =
+
+The free version provides the core features needed to connect Contact Form 7 to Google Sheets, send form submissions automatically, configure spreadsheet columns, and optionally store submissions locally in WordPress.
+
+[CF7 Google Sheets Connector PRO](https://www.gsheetconnector.com/cf7-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector) adds advanced features such as multiple Google Sheets feeds, automatic sheet and tab detection, advanced field mapping, custom headers and column ordering, all supported special mail tags, custom mail tags, conditional logic, Google Drive integration, spreadsheet formatting options, CSV export, role-based permissions, and manual Google authentication.
+
+See the [Free vs PRO feature comparison](https://www.gsheetconnector.com/cf7-google-sheet-connector-pro?utm_source=wordpress.org&utm_medium=wp-repo&utm_campaign=cf7-google-sheet-connector#compare) for more details.
+
 
 == Screenshots ==
 
