@@ -135,12 +135,12 @@ For websites that need more control over field mapping, authentication, automati
 * **Custom mail tags** – Send supported custom mail tag values to Google Sheets for more flexible data collection.
 * **Mail tag controls** – Enable or disable special and custom mail tags using simple toggle controls, so you can choose exactly which additional information is added to your Google Sheet.
 * **Manual Google authentication** – Create and use your own Google Cloud project and OAuth credentials. This is especially useful for Google Workspace organizations that want to configure their OAuth application with an **Internal** audience and restrict authentication to users within their organization.
-* **Header and row styling** – Customize the appearance of your spreadsheet data with header and row formatting options.
-* **Freeze header row** – Keep your spreadsheet column headings visible while scrolling through larger sets of Contact Form 7 entries.
+* **Header and row styling** – Enable spreadsheet styling and choose the formatting you want to apply to the header and data rows in your connected Google Sheet, helping keep your Contact Form 7 entries organized and easier to read.
+* **Freeze header row** – Enable the freeze header option to automatically freeze **Row 1** of your connected Google Sheet, keeping your column headings visible while you scroll through Contact Form 7 submissions.
 * **Background colors and formatting** – Apply supported formatting options to make spreadsheet data easier to read and manage.
 * **Conditional logic** – Create rules that determine when a Contact Form 7 submission should be sent to Google Sheets.
-* **File attachment support** – Handle supported Contact Form 7 file upload fields as part of your form-to-spreadsheet workflow.
-* **Google Drive storage** – Store supported uploaded files in Google Drive as part of your Contact Form 7 workflow.
+* **Local file attachment storage** – Store files submitted through Contact Form 7 upload fields locally in your WordPress uploads directory under the /uploads/cf7gs/ folder, organized by year. The file URL is automatically added to the corresponding Google Sheets column, making it easy to open and access uploaded attachments directly from your spreadsheet.
+* **Google Drive file storage** – Store files submitted through Contact Form 7 upload fields in Google Drive. The Google Drive file link is automatically added to the corresponding Google Sheets column, so you can quickly open and access uploaded attachments directly from your spreadsheet.
 * **CSV export** – Export locally stored Contact Form 7 submissions as a CSV file.
 * **Role-based permissions** – Control which WordPress user roles can access and manage GSheetConnector features.
 * **Priority support** – Get priority assistance from the GSheetConnector support team.
