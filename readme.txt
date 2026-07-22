@@ -1,8 +1,7 @@
-=== GSheetConnector – CF7 Google Sheets Connector with Real-Time Sync ===
-Contributors: westerndeal, abdullah17, gsheetconnector
-Donate link: https://www.paypal.me/WesternDeal
-Tags: contact form 7, google sheets, google sheets integration, google spreadsheet, form submissions
-Requires at least: 3.6
+=== GSheetConnector – CF7 Google Sheets Connector ===
+Contributors: westerndeal, abdullah17
+Tags: cf7, contact form 7, google sheets, google sheets integration, form submissions
+Requires at least: 6.7
 Tested up to: 7.0
 Requires PHP: 7.4
 Requires Plugins: contact-form-7
@@ -10,7 +9,7 @@ Stable tag: 5.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Sync Contact Form 7 submissions to Google Sheets automatically and in real time — no coding, no manual copy-pasting.
+Send Contact Form 7 submissions to Google Sheets automatically in real time and keep every form entry organized and easy to access.
 
 == Description ==
 
