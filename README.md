@@ -1,13 +1,17 @@
 # GSheetConnector – CF7 Google Sheets Connector
-Contributors: westerndeal, abdullah17
-Tags: cf7, contact form 7, google sheets, google sheets integration, form submissions
-Requires at least: 6.7
-Tested up to: 7.0
-Requires PHP: 7.4
-Requires Plugins: contact-form-7
-Stable tag: 5.1.7
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+## Plugin Information
+
+| | |
+|---|---|
+| **Contributors** | [westerndeal](https://profiles.wordpress.org/westerndeal/), [abdullah17](https://profiles.wordpress.org/abdullah17/) |
+| **Tags** | cf7, contact form 7, google sheets, google sheets integration, form submissions |
+| **Requires WordPress** | 6.7 or higher |
+| **Tested up to** | WordPress 7.0 |
+| **Requires PHP** | PHP 7.4 or higher |
+| **Requires Plugin** | [Contact Form 7](https://wordpress.org/plugins/contact-form-7/) |
+| **Stable Version** | 5.1.7 |
+| **License** | GPLv2 or later |
+| **License URI** | https://www.gnu.org/licenses/gpl-2.0.html |
 
 Send Contact Form 7 submissions to Google Sheets automatically in real time and keep every form entry organized and easy to access.
 
